@@ -1,0 +1,33 @@
+# NeoForge 模组声明：NSUK 闲逛补丁
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "nsukwander"
+version = "1.0.0"
+displayName = "NSUK Wander Patch"
+authors = "gw"
+description = '''为 New:Sim-U-Kraft 的无业市民附加闲逛 AI。不修改 NSUK 任何代码，纯事件 + 公开 API 集成。'''
+
+[[dependencies.nsukwander]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.nsukwander]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.22)"
+ordering = "NONE"
+side = "BOTH"
+
+# 强依赖 NSUK，且在 NSUK 之后加载（保证 NSUK 的 SavedData/注册表就绪）
+[[dependencies.nsukwander]]
+modId = "simukraft"
+type = "required"
+versionRange = "[2.0.0,)"
+ordering = "AFTER"
+side = "BOTH"

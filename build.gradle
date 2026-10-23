@@ -1,0 +1,31 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.gradle.userdev' version '7.0.188'
+}
+
+version = mod_version
+base {
+    archivesName = 'nsuk-wander-patch'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    maven { url = 'https://maven.neoforged.net/releases' }
+    maven { url = 'https://maven.aliyun.com/repository/public' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+
+    // NSUK 主模组，仅编译期引用（运行时由玩家 mods 文件夹提供）
+    compileOnly files('libs/New-Sim-U-Kraft-2.0.1-fix-neoforge-1.21.1.jar')
+}
+
+// 让运行配置自动带上 NSUK，方便本地调试（可选）
+// runs { configureEach { modSource project.sourceSets.main } }
